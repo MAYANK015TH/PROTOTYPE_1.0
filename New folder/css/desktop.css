@@ -1,0 +1,739 @@
+/* ==========================================================
+   IMPORTANT-P1
+   DESKTOP SYSTEM v3.1
+   FIXED / POLISHED DESKTOP
+   ========================================================== */
+
+.desktop {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 100vh;
+
+    min-height: 100vh;
+
+    overflow: hidden;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(37, 99, 235, .16),
+            transparent 45%
+        ),
+
+        radial-gradient(
+            circle at 15% 80%,
+            rgba(59, 130, 246, .06),
+            transparent 35%
+        ),
+
+        linear-gradient(
+            180deg,
+            #07101f 0%,
+            #030711 55%,
+            #010306 100%
+        );
+
+}
+
+
+/* ==========================================================
+   HEADER
+   ========================================================== */
+
+.desktop-header {
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    right: 0;
+
+    height: 58px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 26px;
+
+    background:
+        rgba(3, 8, 18, .72);
+
+    backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
+
+    border-bottom:
+        1px solid
+        rgba(96, 165, 250, .18);
+
+    box-shadow:
+        0 8px 30px
+        rgba(0, 0, 0, .25);
+
+    z-index: 20;
+
+}
+
+
+/* ==========================================================
+   SYSTEM NAME
+   ========================================================== */
+
+.desktop-system {
+
+    font-family:
+        var(--font-title);
+
+    font-size: 16px;
+
+    letter-spacing: 3px;
+
+    color: #ffffff;
+
+    text-shadow:
+        0 0 12px
+        rgba(59, 130, 246, .45);
+
+}
+
+
+/* ==========================================================
+   STATUS
+   ========================================================== */
+
+.desktop-status {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    font-family:
+        var(--font-terminal);
+
+    font-size: 12px;
+
+    letter-spacing: 1.5px;
+
+    color: var(--text-soft);
+
+}
+
+
+.status-dot {
+
+    width: 6px;
+
+    height: 6px;
+
+    border-radius: 50%;
+
+    background:
+        #4ade80;
+
+    box-shadow:
+        0 0 9px
+        rgba(74, 222, 128, .8);
+
+    animation:
+        statusPulse 2s
+        ease-in-out
+        infinite;
+
+}
+
+
+@keyframes statusPulse {
+
+    0%,
+    100% {
+
+        opacity: .55;
+
+        transform:
+            scale(.9);
+
+    }
+
+    50% {
+
+        opacity: 1;
+
+        transform:
+            scale(1.15);
+
+    }
+
+}
+
+
+/* ==========================================================
+   FIXED ICON GRID
+   ========================================================== */
+
+.desktop-icons {
+
+    position: absolute;
+
+    top: 95px;
+
+    left: 35px;
+
+    width:
+        min(
+            520px,
+            calc(100vw - 70px)
+        );
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 130px);
+
+    gap: 22px 20px;
+
+    align-items: start;
+
+    z-index: 10;
+
+}
+
+
+/* ==========================================================
+   DESKTOP ICON
+   ========================================================== */
+
+.desktop-icon {
+
+    width: 110px;
+
+    min-height: 115px;
+
+    padding: 12px 8px;
+
+    border-radius: 16px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    cursor: pointer;
+
+    user-select: none;
+
+    -webkit-user-drag: none;
+
+    border:
+        1px solid
+        transparent;
+
+    opacity: 0;
+
+    transform:
+        translateY(12px)
+        scale(.96);
+
+    transition:
+
+        opacity .45s ease,
+
+        transform .25s
+        cubic-bezier(.22,1,.36,1),
+
+        background .25s ease,
+
+        border-color .25s ease,
+
+        box-shadow .25s ease;
+
+}
+
+
+/* ==========================================================
+   ICON ENTRY
+   ========================================================== */
+
+.desktop-icon.icon-visible {
+
+    opacity: 1;
+
+    transform:
+        translateY(0)
+        scale(1);
+
+    transition-delay:
+        var(--icon-delay);
+
+}
+
+
+/* ==========================================================
+   PREVENT DRAGGING
+   ========================================================== */
+
+.desktop-icon,
+.desktop-icon * {
+
+    -webkit-user-drag: none;
+
+}
+
+
+/* ==========================================================
+   HOVER
+   ========================================================== */
+
+.desktop-icon:hover {
+
+    transform:
+        translateY(-5px)
+        scale(1.02);
+
+    background:
+        rgba(59, 130, 246, .08);
+
+    border-color:
+        rgba(96, 165, 250, .20);
+
+    box-shadow:
+
+        0 12px 30px
+        rgba(0, 0, 0, .28),
+
+        inset 0 0 20px
+        rgba(59, 130, 246, .05);
+
+}
+
+
+/* ==========================================================
+   SELECTED
+   ========================================================== */
+
+.desktop-icon.selected {
+
+    background:
+        rgba(59, 130, 246, .12);
+
+    border-color:
+        rgba(96, 165, 250, .30);
+
+    box-shadow:
+
+        0 0 25px
+        rgba(59, 130, 246, .10),
+
+        inset 0 0 20px
+        rgba(59, 130, 246, .06);
+
+}
+
+
+/* ==========================================================
+   CLICK / LAUNCH
+   ========================================================== */
+
+.desktop-icon.launching {
+
+    transform:
+        scale(.90);
+
+    opacity: .65;
+
+}
+
+
+.desktop-icon.launching
+.desktop-icon-image {
+
+    transform:
+        scale(.92);
+
+}
+
+
+/* ==========================================================
+   ICON IMAGE
+   ========================================================== */
+
+.desktop-icon-image {
+
+    width: 62px;
+
+    height: 62px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 9px;
+
+    font-size: 38px;
+
+    border-radius: 15px;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(59, 130, 246, .14),
+            rgba(15, 23, 42, .65)
+        );
+
+    border:
+        1px solid
+        rgba(96, 165, 250, .14);
+
+    box-shadow:
+
+        inset 0 0 18px
+        rgba(59, 130, 246, .05),
+
+        0 5px 18px
+        rgba(0, 0, 0, .25);
+
+    transition:
+
+        transform .25s
+        cubic-bezier(.22,1,.36,1),
+
+        border-color .25s ease,
+
+        box-shadow .25s ease;
+
+}
+
+
+/* ==========================================================
+   ICON HOVER
+   ========================================================== */
+
+.desktop-icon:hover
+.desktop-icon-image {
+
+    transform:
+        translateY(-2px)
+        scale(1.05);
+
+    border-color:
+        rgba(96, 165, 250, .35);
+
+    box-shadow:
+
+        0 0 20px
+        rgba(59, 130, 246, .16),
+
+        inset 0 0 20px
+        rgba(59, 130, 246, .08);
+
+}
+
+
+/* ==========================================================
+   ICON LABEL
+   ========================================================== */
+
+.desktop-icon-label {
+
+    width: 100%;
+
+    font-family:
+        var(--font-ui);
+
+    font-size: 12px;
+
+    font-weight: 500;
+
+    text-align: center;
+
+    color:
+        #dbeafe;
+
+    line-height: 1.4;
+
+    text-shadow:
+        0 1px 5px
+        rgba(0, 0, 0, .8);
+
+}
+
+
+/* ==========================================================
+   CLASSIFIED SPECIAL EFFECT
+   ========================================================== */
+
+.classified-icon {
+
+    border-color:
+        rgba(248, 113, 113, .08);
+
+}
+
+
+.classified-icon
+.desktop-icon-image {
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(127, 29, 29, .18),
+            rgba(15, 23, 42, .68)
+        );
+
+    border-color:
+        rgba(248, 113, 113, .16);
+
+}
+
+
+.classified-icon:hover {
+
+    background:
+        rgba(127, 29, 29, .10);
+
+    border-color:
+        rgba(248, 113, 113, .28);
+
+    box-shadow:
+
+        0 12px 30px
+        rgba(0, 0, 0, .28),
+
+        0 0 20px
+        rgba(220, 38, 38, .07);
+
+}
+
+
+.classified-icon:hover
+.desktop-icon-image {
+
+    border-color:
+        rgba(248, 113, 113, .35);
+
+    box-shadow:
+
+        0 0 22px
+        rgba(220, 38, 38, .13);
+
+}
+
+
+/* ==========================================================
+   FOOTER
+   ========================================================== */
+
+.desktop-footer {
+
+    position: absolute;
+
+    bottom: 18px;
+
+    left: 26px;
+
+    right: 26px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    color:
+        rgba(148, 163, 184, .55);
+
+    font-family:
+        var(--font-terminal);
+
+    font-size: 10px;
+
+    letter-spacing: 1.5px;
+
+    z-index: 10;
+
+}
+
+
+/* ==========================================================
+   DESKTOP FADE-IN
+   ========================================================== */
+
+.desktop.fade-in {
+
+    animation:
+        desktopAppear .65s
+        ease forwards;
+
+}
+
+
+@keyframes desktopAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            scale(1.015);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scale(1);
+
+    }
+
+}
+
+
+/* ==========================================================
+   MOBILE
+   ========================================================== */
+
+@media(max-width:700px) {
+
+    .desktop-header {
+
+        padding:
+            0 15px;
+
+    }
+
+
+    .desktop-system {
+
+        font-size: 13px;
+
+        letter-spacing: 2px;
+
+    }
+
+
+    .desktop-status {
+
+        display: none;
+
+    }
+
+
+    .desktop-icons {
+
+        top: 80px;
+
+        left: 15px;
+
+        width:
+            calc(100vw - 30px);
+
+        grid-template-columns:
+            repeat(2, 100px);
+
+        gap: 14px;
+
+    }
+
+
+    .desktop-icon {
+
+        width: 90px;
+
+        min-height: 105px;
+
+    }
+
+
+    .desktop-icon-image {
+
+        width: 56px;
+
+        height: 56px;
+
+        font-size: 34px;
+
+    }
+
+
+    .desktop-footer {
+
+        left: 15px;
+
+        right: 15px;
+
+        font-size: 9px;
+
+    }
+
+}
+
+
+/* ==========================================================
+   VERY SMALL SCREENS
+   ========================================================== */
+
+@media(max-width:380px) {
+
+    .desktop-icons {
+
+        grid-template-columns:
+            repeat(2, 90px);
+
+        gap: 10px;
+
+    }
+
+
+    .desktop-icon {
+
+        width: 82px;
+
+    }
+
+}
+
+
+/* ==========================================================
+   REDUCED MOTION
+   ========================================================== */
+
+@media(prefers-reduced-motion:reduce) {
+
+    .desktop-icon,\n    .desktop-icon.icon-visible,
+    .desktop-icon:hover,
+    .desktop-icon.launching {
+
+        animation: none;
+
+        transition: none;
+
+    }
+
+    .status-dot {
+
+        animation: none;
+
+    }
+
+}

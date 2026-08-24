@@ -1,0 +1,363 @@
+/* ==========================================================
+   IMPORTANT-P1
+   CONTROLLED WINDOW SYSTEM v2.0
+   ========================================================== */
+
+.window{
+
+    position:fixed;
+
+    top:50%;
+
+    left:50%;
+
+    width:min(760px,90vw);
+
+    height:min(500px,78vh);
+
+    transform:
+        translate(-50%,-50%)
+        scale(1);
+
+    background:
+        rgba(8,15,28,.94);
+
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
+
+    border:
+        1px solid rgba(96,165,250,.20);
+
+    border-radius:18px;
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.60),
+        0 0 35px rgba(59,130,246,.06);
+
+    overflow:hidden;
+
+    z-index:100;
+
+    display:flex;
+
+    flex-direction:column;
+
+    opacity:1;
+
+    will-change:
+        transform,
+        opacity;
+
+}
+
+
+/* ==========================================================
+   OPEN ANIMATION
+   ========================================================== */
+
+.window-enter{
+
+    opacity:0;
+
+    transform:
+        translate(-50%,-50%)
+        scale(.94);
+
+}
+
+.window-active{
+
+    animation:
+        windowOpen .42s
+        cubic-bezier(.22,1,.36,1)
+        forwards;
+
+}
+
+@keyframes windowOpen{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translate(-50%,-50%)
+            scale(.94);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translate(-50%,-50%)
+            scale(1);
+
+    }
+
+}
+
+
+/* ==========================================================
+   CLOSE ANIMATION
+   ========================================================== */
+
+.window-closing{
+
+    animation:
+        windowClose .28s
+        ease-in
+        forwards;
+
+    pointer-events:none;
+
+}
+
+@keyframes windowClose{
+
+    from{
+
+        opacity:1;
+
+        transform:
+            translate(-50%,-50%)
+            scale(1);
+
+    }
+
+    to{
+
+        opacity:0;
+
+        transform:
+            translate(-50%,-50%)
+            scale(.95);
+
+    }
+
+}
+
+
+/* ==========================================================
+   HEADER
+   ========================================================== */
+
+.window-header{
+
+    height:52px;
+
+    min-height:52px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 18px;
+
+    background:
+        rgba(255,255,255,.035);
+
+    border-bottom:
+        1px solid rgba(255,255,255,.06);
+
+    user-select:none;
+
+}
+
+
+/*
+ * No move cursor.
+ */
+
+.window-header{
+
+    cursor:default;
+
+}
+
+
+/* ==========================================================
+   TITLE
+   ========================================================== */
+
+.window-title{
+
+    font-family:
+        var(--font-title);
+
+    color:#ffffff;
+
+    letter-spacing:1px;
+
+    font-size:14px;
+
+}
+
+
+/* ==========================================================
+   CLOSE BUTTON
+   ========================================================== */
+
+.window-close{
+
+    width:34px;
+
+    height:34px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:9px;
+
+    background:
+        transparent;
+
+    color:
+        rgba(255,255,255,.75);
+
+    border:none;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    transition:
+        background .2s ease,
+        color .2s ease,
+        transform .2s ease;
+
+}
+
+.window-close:hover{
+
+    background:
+        rgba(239,68,68,.85);
+
+    color:#ffffff;
+
+    transform:
+        scale(1.08);
+
+}
+
+.window-close:active{
+
+    transform:
+        scale(.92);
+
+}
+
+
+/* ==========================================================
+   WINDOW BODY
+   ========================================================== */
+
+.window-body{
+
+    flex:1;
+
+    min-height:0;
+
+    overflow:auto;
+
+    padding:24px;
+
+    scrollbar-width:thin;
+
+    scrollbar-color:
+        rgba(96,165,250,.35)
+        transparent;
+
+}
+
+
+/* ==========================================================
+   WEBKIT SCROLLBAR
+   ========================================================== */
+
+.window-body::-webkit-scrollbar{
+
+    width:7px;
+
+}
+
+.window-body::-webkit-scrollbar-track{
+
+    background:transparent;
+
+}
+
+.window-body::-webkit-scrollbar-thumb{
+
+    background:
+        rgba(96,165,250,.28);
+
+    border-radius:10px;
+
+}
+
+.window-body::-webkit-scrollbar-thumb:hover{
+
+    background:
+        rgba(96,165,250,.45);
+
+}
+
+
+/* ==========================================================
+   MOBILE
+   ========================================================== */
+
+@media(max-width:700px){
+
+    .window{
+
+        width:94vw;
+
+        height:82vh;
+
+        border-radius:15px;
+
+    }
+
+    .window-header{
+
+        height:48px;
+
+        min-height:48px;
+
+        padding:
+            0 14px;
+
+    }
+
+    .window-body{
+
+        padding:18px;
+
+    }
+
+}
+
+
+/* ==========================================================
+   REDUCED MOTION
+   ========================================================== */
+
+@media(prefers-reduced-motion:reduce){
+
+    .window-active,
+    .window-closing{
+
+        animation:none;
+
+    }
+
+}

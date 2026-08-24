@@ -1,0 +1,222 @@
+/* ==========================================================
+   IMPORTANT-P1 PROTOCOL
+   LAYOUT
+   ========================================================== */
+
+/* ==========================================================
+   APPLICATION CONTAINER
+   ========================================================== */
+
+.app-container {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+}
+
+/* ==========================================================
+   HEADER
+   ========================================================== */
+
+.app-header {
+    width: 100%;
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 var(--space-8);
+
+    background: rgba(5, 5, 5, 0.85);
+    backdrop-filter: blur(10px);
+
+    border-bottom: 1px solid var(--border-color);
+
+    z-index: var(--z-content);
+}
+
+.system-title {
+    font-family: var(--font-terminal);
+    font-size: var(--fs-lg);
+    font-weight: var(--fw-bold);
+
+    color: var(--accent);
+
+    letter-spacing: 2px;
+
+    text-shadow: 0 0 10px var(--accent-glow);
+}
+
+.system-status {
+    font-family: var(--font-terminal);
+    font-size: var(--fs-sm);
+
+    color: var(--success);
+}
+
+/* ==========================================================
+   MAIN CONTENT
+   ========================================================== */
+
+.app-main {
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: var(--space-8);
+
+    position: relative;
+}
+
+/* ==========================================================
+   FOOTER
+   ========================================================== */
+
+.app-footer {
+    width: 100%;
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-top: 1px solid var(--border-color);
+
+    background: rgba(5, 5, 5, 0.85);
+
+    font-family: var(--font-terminal);
+    font-size: var(--fs-xs);
+
+    color: var(--text-muted);
+
+    letter-spacing: 1px;
+}
+
+/* ==========================================================
+   SCREEN CONTAINER
+   Every page (Boot, Archive, Secret) uses this.
+   ========================================================== */
+
+.screen {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    animation: fadeIn .5s ease;
+}
+
+/* ==========================================================
+   CARD
+   ========================================================== */
+
+.panel {
+    width: min(100%, 900px);
+
+    background: var(--bg-panel);
+
+    border: 1px solid var(--border-color);
+
+    border-radius: var(--radius-lg);
+
+    padding: var(--space-8);
+
+    box-shadow: var(--shadow-soft);
+
+    backdrop-filter: blur(12px);
+}
+
+/* ==========================================================
+   GRID
+   ========================================================== */
+
+.grid {
+    display: grid;
+
+    gap: var(--space-6);
+}
+
+.grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+/* ==========================================================
+   FLEX HELPERS
+   ========================================================== */
+
+.flex {
+    display: flex;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.gap-sm {
+    gap: var(--space-3);
+}
+
+.gap-md {
+    gap: var(--space-5);
+}
+
+.gap-lg {
+    gap: var(--space-8);
+}
+
+/* ==========================================================
+   SPACING HELPERS
+   ========================================================== */
+
+.mt-sm {
+    margin-top: var(--space-3);
+}
+
+.mt-md {
+    margin-top: var(--space-6);
+}
+
+.mt-lg {
+    margin-top: var(--space-10);
+}
+
+.mb-sm {
+    margin-bottom: var(--space-3);
+}
+
+.mb-md {
+    margin-bottom: var(--space-6);
+}
+
+.mb-lg {
+    margin-bottom: var(--space-10);
+}
